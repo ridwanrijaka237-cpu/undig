@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Music Button</title>
+<style>
+  body {
+    margin: 0;
+    background: transparent;
+  }
+
+  .music-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .playing {
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="music-btn" id="btn">🎵</div>
+
+<audio id="music" loop>
+  <source src="https://raw.githubusercontent.com/ridwanrijaka237-cpu/undig/main/lagu-mp3cutnet.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const btn = document.getElementById("btn");
+  const music = document.getElementById("music");
+  let play = false;
+
+  btn.onclick = () => {
+    if (!play) {
+      music.play();
+      btn.classList.add("playing");
+    } else {
+      music.pause();
+      btn.classList.remove("playing");
+    }
+    play = !play;
+  };
+</script>
+
+</body>
+</html>
